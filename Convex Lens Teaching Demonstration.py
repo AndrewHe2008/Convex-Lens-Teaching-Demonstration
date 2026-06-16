@@ -2,6 +2,10 @@ import math
 import streamlit as st
 import matplotlib.pyplot as plt
 
+# 兼容本地Windows + 云端Linux的中文显示配置
+plt.rcParams['font.sans-serif'] = ['Microsoft YaHei', 'WenQuanYi Micro Hei', 'DejaVu Sans']
+plt.rcParams['axes.unicode_minus'] = False
+
 # ========== 页面配置 ==========
 st.set_page_config(page_title="凸透镜成像动态演示", layout="wide")
 st.title("🔍 凸透镜成像规律 动态演示")
@@ -38,9 +42,6 @@ else:
         image_type = "正立、放大、虚像"
 
 # ========== 绘图 ==========
-# 解决中文显示乱码问题
-plt.rcParams['font.sans-serif'] = ['Microsoft YaHei']
-plt.rcParams['axes.unicode_minus'] = False  # 同时解决负号显示异常
 
 fig, ax = plt.subplots(figsize=(10, 6), dpi=100)
 
